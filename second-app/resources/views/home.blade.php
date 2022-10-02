@@ -1,18 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    @if( $name == "Adam")
-    <h1>{{$name}}</h1>
-    @else
-    <h1>work</h1>
-    @endif
+{{-- blade layout inheritence syntax --}}
 
-   
-</body>
-</html>
+{{-- @extends('layouts/base')  
+
+@section('content')
+    <p>This was sent from home</p>
+@endsection
+
+@section('name', 'Adam') --}}
+
+
+{{-- blade compenent syntax --}}
+
+<x-base>
+
+   <x-slot name="name">
+        Adam
+   </x-slot>
+
+   <x-slot name="content">
+        <p>This was sent from home</p>
+   </x-slot>
+
+</x-base>

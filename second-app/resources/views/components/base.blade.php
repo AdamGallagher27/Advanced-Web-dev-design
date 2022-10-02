@@ -8,9 +8,9 @@
 </head>
 <body>
     <h1>base layout</h1>
-    <h1>hello @yield('name')</h1>
+    <h1>hello {{ $name }}</h1>
     <section>
-        @yield('content');
+        {{ $content }};
     </section>
 </body>
 </html>
