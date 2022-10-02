@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>{{ config("app.name") }}</h1>
     <h1>base layout</h1>
     <h1>hello {{ $name }}</h1>
     <section>
