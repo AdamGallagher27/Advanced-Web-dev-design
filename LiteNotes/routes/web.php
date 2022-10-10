@@ -20,7 +20,8 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    // return view('dashboard');
+    return redirect('/../index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
@@ -29,5 +30,8 @@ require __DIR__.'/auth.php';
 // creates route for every function in notecontroller
 Route::resource("/notes", NoteController::class);
 
-
+// route for index
 Route::get('/index', [NoteController::class, "index"])->middleware(["auth"]);
+
+// route for all crud operations
+Route::resource("/notes", NoteController::class)->middleware(["auth"]);

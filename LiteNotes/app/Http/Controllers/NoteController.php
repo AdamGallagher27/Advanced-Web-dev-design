@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Note;
+
 
 
 class NoteController extends Controller
@@ -16,7 +19,8 @@ class NoteController extends Controller
     public function index()
     {
 
-        $notes = DB::table("notes")->get();
+        // $notes = DB::table("notes")->get();
+        $notes = Note::where("user_id", Auth::id())->latest("updated_at")->get();
 
         
         return view("notes/index")->with("notes", $notes);
@@ -29,7 +33,7 @@ class NoteController extends Controller
      */
     public function create()
     {
-        //
+        return view("notes/create");
     }
 
     /**
