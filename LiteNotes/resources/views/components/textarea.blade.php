@@ -1,7 +1,11 @@
 <div>
-    <!-- Simplicity is the ultimate sophistication. - Leonardo da Vinci -->
-    <form action="{{ routes(notes.store) }}">
-        <input type="text" name="title">
-        <input type="text" name="text">
-    </form>
+    
+    @props(['disabled' => false, 'field' => '', 'value' => ''])
+
+<textarea {{ $disabled ? 'disabled' : '' }} {!! $attributes->merge(['class' => 'rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50']) !!}
+    >{{ $value }}</textarea>
+@error($field)
+    <div class="text-red-600 text-sm">{{ $message }}</div>
+@enderror
+
 </div>

@@ -27,11 +27,12 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 
-// creates route for every function in notecontroller
-Route::resource("/notes", NoteController::class);
 
 // route for index
 Route::get('/index', [NoteController::class, "index"])->middleware(["auth"]);
+
+// route for store
+Route::get('/store', [NoteController::class, "store"])->middleware(["auth"]);
 
 // route for all crud operations
 Route::resource("/notes", NoteController::class)->middleware(["auth"]);
