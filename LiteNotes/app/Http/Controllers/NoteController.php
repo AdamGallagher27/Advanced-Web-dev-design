@@ -78,9 +78,10 @@ class NoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Note $note)
     {
-        //
+        return view("notes.edit")->with("note", $note);
+
     }
 
     /**
@@ -90,9 +91,21 @@ class NoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Note $note)
     {
-        //
+        $request->validate([
+            "title" => "required|max:120",
+            "text" => "required"
+        ]);
+
+        $note->update([
+            "user_id" => Auth::id(),
+            "title" => $request->title,
+            "text" => $request->text,
+        ]);
+
+
+        return to_route("notes.show", $note);
     }
 
     /**
