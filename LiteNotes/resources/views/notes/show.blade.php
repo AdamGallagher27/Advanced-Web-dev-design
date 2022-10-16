@@ -7,6 +7,11 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            @if (session('success'))
+                <div class="mb-4 px-4 py-2 bg-green-100 border border-green-200 text-green">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="flex">
                 <a href="{{ route('notes.edit', $note) }}" class="btn-link ml-auto">Edit Note</a>
                 <form action=" {{ route('notes.destroy', $note) }}" method="POST">
